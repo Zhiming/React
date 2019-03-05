@@ -1,3 +1,6 @@
+## Description
+This is a demo project for demo purpose to understand how Redux works. 
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
