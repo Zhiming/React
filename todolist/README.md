@@ -1,3 +1,5 @@
+This is a pure React project. Just for demo purpose to understand the basic concepts in React. 
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
