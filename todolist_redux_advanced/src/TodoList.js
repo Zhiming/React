@@ -25,11 +25,8 @@ class TodoList extends Component {
     }
 
     componentDidMount() {
-        axios.get("/api/list").then((res) => {
-            store.dispatch(getInitListAction(res.data));
-        }).catch(() => {
-            console.log("error");
-        });
+        const action = getInitListAction();
+        store.dispatch(action);
     }
 
     handleBtnClick() {

@@ -26,6 +26,7 @@ export default (state = defaultState, action) => {
     }
 
     if (action.type === INIT_LIST) {
+        console.log("in reducer.js");
         const newState = JSON.parse(JSON.stringify(state));
         newState.list = action.data;
         return newState;
