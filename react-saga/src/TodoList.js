@@ -7,7 +7,6 @@ import {
     getItemDeleteAction,
     getInitListAction
 } from './store/actionCreators'
-import axios from "axios";
 
 
 class TodoList extends Component {
