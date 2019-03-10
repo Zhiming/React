@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import {ListItem, ListInfo } from '../style';
+import {ListItem, ListInfo, LoadMore} from '../style';
 import { connect } from 'react-redux';
+import {actionCreators} from '../store'
 
 class List extends Component {
 
@@ -9,9 +10,9 @@ class List extends Component {
         return (
             <div>
                 {
-                    this.props.list.map((item) => {
+                    this.props.list.map((item, index) => {
                         return (
-                            <ListItem key = {item.get("id")}>
+                            <ListItem key={index}>
                                 <img className="pic" src="//upload-images.jianshu.io/upload_images/4391713-8d14dd7844edbe65?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240" alt="" />
                                 <ListInfo>
                                     <h3 className = "title">20本哲学文学名著中的20个精华名句，多看多受益！</h3>
@@ -21,6 +22,9 @@ class List extends Component {
                         );
                     })
                 }
+                <LoadMore onClick={() => {
+                    this.props.getMoreList(this.props.page)
+                }}>更多文字</LoadMore>
             </div>
         );
 
@@ -28,7 +32,14 @@ class List extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    list: state.get("home").get("articleList")
+    list: state.get("home").get("articleList"),
+    page: state.getIn(["home", "articlePage"])
 });
 
-export default connect(mapStateToProps, null)(List);
+const mapDispatchToProps = (dispatch) => ({
+    getMoreList(page) {
+        dispatch(actionCreators.getMoreList(page));
+    }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(List);
